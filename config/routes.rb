@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # get 'messages/index' 
+  # Rooting "/" (root) to messages#index action of the messages controller.
+  root 'messages#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
