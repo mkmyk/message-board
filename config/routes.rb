@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   # get 'messages/index' 
-  # Rooting "/" (root) to messages#index action of the messages controller.
+
+  # root GET  /                   messages#index
   root 'messages#index'
 
+  # messages POST /messages(.:format) messages#create
+  resources :messages, only:[:create]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

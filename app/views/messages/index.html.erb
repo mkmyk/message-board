@@ -1,3 +1,27 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
-<p>invoked by the message controller.</p>
+<!-- "form_for" is a form helper to generate a form -->
+<!-- it also connect a form with model object -->
+<!-- f is called "form builder" and generates HTML -->
+
+<h1>メッセージ一覧</h1>
+<% @messages.each do |message| %>
+    名前： <%= message.name %>
+    内容： <%= message.body %>
+    <br>
+<% end  %>
+
+<%= form_for(@message) do |f| %>
+    名前：
+    <!--  generates <input type="text" name="message[name]" id="message_name" /> -->
+    <%= f.text_field :name %>
+    
+    内容：
+    <!--  generates <input type="text" name="message[body]" id="message_body" /> -->
+    <%= f.text_field :body %>
+    
+    <!--  generates <input type="submit" name="commit" value="Create Message" /> -->
+    <%= f.submit %>
+<% end %>
+
+<!--  <form class="new_message" id="new_message"  -->
+<!--        action="/messages" accept-charset="UTF-8" method="post">-->
+    
