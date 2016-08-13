@@ -8,8 +8,7 @@
     </div>
     <div class="panel-body">
         <% @messages.each do |message| %>
-        <!-- <span class="label label-into"><%= message.name %></span>-->
-            <%= message.name %>
+            <span class="label label-into"><%= message.name %></span>
             <%= message.body %>
             <br>
         <% end  %>
@@ -17,16 +16,31 @@
 </div>
 
 <%= form_for(@message) do |f| %>
+    <% if @message.errors.present? %>
+        <div class="alert alert-danger">
+            <%= alert %>
+            <ul>
+                <!-- Modelのバリデーションエラーはerrorsにセットされている-->
+                <!-- each は配列等に用意されているメソッド。-->
+                <% @message.errors.full_messages.each do |full_message|  %>
+                    <li>
+                        <%= full_message %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
     名前：
     <!--  generates <input type="text" name="message[name]" id="message_name" /> -->
     <%= f.text_field :name %>
     
     内容：
     <!--  generates <input type="text" name="message[body]" id="message_body" /> -->
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
     
     <!--  generates <input type="submit" name="commit" value="Create Message" /> -->
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-sm btn-primary"%>
 <% end %>
 
 <!--  <form class="new_message" id="new_message"  -->
