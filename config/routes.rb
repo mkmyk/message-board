@@ -4,9 +4,21 @@ Rails.application.routes.draw do
   # root GET  /                   messages#index
   root 'messages#index'
 
-  # messages POST /messages(.:format) messages#create
-  resources :messages, only:[:create]
+  # messages POST /messages(.:format) messages#createを作る
+  # resources :messages, only:[:create]
   
+  # 下記のX以外を作る
+  # Prefix Verb URI     Pattern                     Controller#Action
+  # messages    GET    /messages(.:format)          messages#index    X
+  #             POST   /messages(.:format)          messages#create
+  # new_message GET    /messages/new(.:format)      messages#new      X
+  # edit_message GET   /messages/:id/edit(.:format) messages#edit
+  # message     GET    /messages/:id(.:format)      messages#show
+  #             PATCH  /messages/:id(.:format)      messages#update
+  #             PUT    /messages/:id(.:format)      messages#update
+  #             DELETE /messages/:id(.:format)      messages#destroy
+  resources :messages , except: [:index, :new]
+             
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
