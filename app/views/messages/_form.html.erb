@@ -1,4 +1,3 @@
-<%= form_for(@message) do |f|  %>
     <% if @message.errors.present? %>
         <div class="alert alert-danger">
             <%= alert %>
@@ -12,10 +11,19 @@
         </div>
     <% end %>
 
-    名前：
-    <%= f.text_field :name %>
+<%= form_for(@message) do |f|  %>
 
-    内容：    
-    <%= f.text_field :body %>
+	<div class="input-group">
+		<span class="input-group-addon">名前：</span>
+		<%= f.text_field :name, class: "form-control" %>
+    </div>
+	<div class="input-group">
+		<span class="input-group-addon">内容：</span>
+		<%= f.text_area :body, class: "form-control"%>
+	</div>
+    
+    <br>
     <%= f.submit class: "btn btn-sm btn-primary" %>
+
 <% end %>
+
