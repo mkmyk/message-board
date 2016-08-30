@@ -1,29 +1,29 @@
-    <% if @message.errors.present? %>
-        <div class="alert alert-danger">
-            <%= alert %>
-            <ul>
-                <%= @message.errors.full_messages.each do |full_message| %>
-                    <li>
-                        <%= full_message %>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-
 <%= form_for(@message) do |f|  %>
 
 	<div class="input-group">
 		<span class="input-group-addon">名前：</span>
-		<%= f.text_field :name, class: "form-control" %>
+		<%= f.text_field :name, class: "form-control", placeholder: "Enter your name..." %>
     </div>
 	<div class="input-group">
 		<span class="input-group-addon">内容：</span>
-		<%= f.text_area :body, class: "form-control"%>
+		<%= f.text_area :body, class: "form-control", placeholder: "Enter message..."%>
 	</div>
     
     <br>
     <%= f.submit class: "btn btn-sm btn-primary" %>
 
+<% end %>
+
+<% if @message.errors.present? %>
+    <div class="alert alert-danger">
+        <%= alert %>
+        <ul>
+            <%= @message.errors.full_messages.each do |full_message| %>
+                <li>
+                    <%= full_message %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 
