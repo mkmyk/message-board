@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:edit, :update,:delete]
+  before_action :set_message, only: [:edit, :update,:destroy]
 
   #This call the view "app/views/messages/index.html.erb"
   def index
@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
   end
 
   def set_message
-    @mesasge=Message.find(params[:id])
+    @message=Message.find(params[:id])
   end
   
 end
